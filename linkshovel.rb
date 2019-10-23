@@ -61,4 +61,6 @@ end
 }
 gets
 kill=1
+puts "\e[H\e[2J"
+puts "Exiting..."
 abort
