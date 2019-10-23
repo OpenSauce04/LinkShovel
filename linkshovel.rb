@@ -31,14 +31,12 @@ for i in 0..BigDecimal::INFINITY
   begin
     link_current=links.to_a.sample
     links.merge(get_links(link_current))
-  
-    File.open("links.txt", 'w') { |file| file.write(links.to_s) }
   rescue
     next
   end
   if kill==1 then
   	puts "\e[H\e[2J"
-  	puts "Exiting..."
+  	puts "Exiting... (This may take a while)"
   	abort
   end
 end
@@ -62,5 +60,6 @@ end
 gets
 kill=1
 puts "\e[H\e[2J"
-puts "Exiting..."
+puts "Exiting... (This may take a while)"
+File.open("links.txt", 'w') { |file| file.write(links.to_s) }
 abort
