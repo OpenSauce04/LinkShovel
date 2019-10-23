@@ -1,3 +1,6 @@
+links.txt
+
+# Ruby .gitignore template from github
 *.gem
 *.rbc
 /.config
