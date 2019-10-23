@@ -24,19 +24,41 @@ rescue
   exit
 end
 
+kill=0
+for i in 1..30
+Thread.new {
+for i in 0..BigDecimal::INFINITY
+  begin
+    link_current=links.to_a.sample
+    links.merge(get_links(link_current))
+  
+    File.open("links.txt", 'w') { |file| file.write(links.to_s) }
+  rescue
+    next
+  end
+  if kill==1 then
+  	puts "\e[H\e[2J"
+  	puts "Exiting..."
+  	abort
+  end
+end
+}
+end
+Thread.new {
+links_int=links.to_a.length.to_s
 for i in 0..BigDecimal::INFINITY
   begin
     puts "\e[H\e[2J"
     puts "LinkShovel"
     puts "‾‾‾‾‾‾‾‾‾‾"
-    link_current=links.to_a.sample
-    puts "Found "+links.to_a.length.to_s+" sites."
+    puts "Found "+links_int+" sites."
     puts
-    puts "Press Ctrl+C to stop"
-    links.merge(get_links(link_current))
-    
-    File.open("links.txt", 'w') { |file| file.write(links.to_s) }
-  rescue
-    next
+    puts "Press Enter to stop"
+    links_int=links.to_a.length.to_s
+    sleep 0.1
   end
 end
+}
+gets
+kill=1
+abort
