@@ -23,8 +23,7 @@ end
 
 for i in 0..BigDecimal::INFINITY
   begin
-    puts "_____________________________________"
-    puts
+    puts "\e[H\e[2J"
     link_current=links.to_a.sample
     puts "Visiting "+link_current
     puts
