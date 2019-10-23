@@ -23,8 +23,11 @@ end
 
 for i in 0..BigDecimal::INFINITY
   begin
+    puts "_____________________________________"
+    puts
     link_current=links.to_a.sample
     puts "Visiting "+link_current
+    puts
     puts "Found: "+get_links(link_current).to_s
     links.merge(get_links(link_current))
     File.open("links.txt", 'w') { |file| file.write(links.to_s) }
