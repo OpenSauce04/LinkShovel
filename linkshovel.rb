@@ -34,11 +34,6 @@ for i in 0..BigDecimal::INFINITY
   rescue
     next
   end
-  if kill==1 then
-  	puts "\e[H\e[2J"
-  	puts "Exiting... (This may take a while)"
-  	abort
-  end
 end
 }
 end
@@ -58,8 +53,9 @@ for i in 0..BigDecimal::INFINITY
 end
 }
 gets
-kill=1
 puts "\e[H\e[2J"
-puts "Exiting... (This may take a while)"
+puts "Exiting..."
 File.open("links.txt", 'w') { |file| file.write(links.to_s) }
+puts "\e[H\e[2J"
+puts "You can now close this window."
 abort
