@@ -5,16 +5,12 @@ require 'bigdecimal'
 
 def get_links(url)
   Nokogiri::HTML(open(url).read).css("a").map do |link|
-    if (href = link.attr("href")) && href.match(/^https?:/)
+    if (href = link.attr("href"))
       href
     end
   end.compact
 end
-puts "\e[H\e[2J"
-puts "LinkShovel"
-puts "‾‾‾‾‾‾‾‾‾‾"
-puts "Input initial website:"
-links = Set[gets.chomp]
+links = Set["https://google.com", "https://tumblr.com", "https://twitter.com", "https://reddit.com", "https://wikipedia", "https://en.wikinews.org/wiki/Main_Page", "https://facebook.com"]
 # Checking link is valid
 begin
   link_current=links.to_a.sample
