@@ -13,7 +13,7 @@ end
 puts "\e[H\e[2J"
 puts "LinkShovel"
 puts "‾‾‾‾‾‾‾‾‾‾"
-puts "Input root website:"
+puts "Input initial website:"
 links = Set[gets.chomp]
 # Checking link is valid
 begin
@@ -44,7 +44,7 @@ for i in 0..BigDecimal::INFINITY
     puts "\e[H\e[2J"
     puts "LinkShovel"
     puts "‾‾‾‾‾‾‾‾‾‾"
-    puts "Found "+links_int+" sites."
+    puts "Found "+links_int+" pages."
     puts
     puts "Press Enter to stop"
     links_int=links.to_a.length.to_s
