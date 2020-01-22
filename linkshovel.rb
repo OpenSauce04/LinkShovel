@@ -16,6 +16,7 @@ puts "Reading config..."
 config = File.read('config.html')
 Nokogiri::HTML(config).css("a").map do |link|
   if (href = link.attr("href"))
+    puts "  "+href
     init_links.append(href)
   end
 end.compact
@@ -29,6 +30,7 @@ rescue
   puts "Connection failed, check your connection and try again"
   exit
 end
+puts "  Success!"
 puts "Starting Threads..."
 kill=0
 for i in 1..30
