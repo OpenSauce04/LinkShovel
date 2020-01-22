@@ -11,12 +11,12 @@ def get_links(url)
   end.compact
 end
 links = Set["https://google.com", "https://tumblr.com", "https://twitter.com", "https://reddit.com", "https://wikipedia", "https://en.wikinews.org/wiki/Main_Page", "https://facebook.com"]
-# Checking link is valid
+# Checking connection
 begin
   link_current=links.to_a.sample
   get_links(link_current)
 rescue
-  puts "Link is invalid"
+  puts "Connection failed, check your connection and try again"
   exit
 end
 
