@@ -37,7 +37,7 @@ Thread.new {
 links_int=links.to_a.length.to_s
 for i in 0..BigDecimal::INFINITY
   begin
-    puts "\e[H\e[2J"
+    puts "\033[0;0H"
     puts "LinkShovel"
     puts "‾‾‾‾‾‾‾‾‾‾"
     puts "Found "+links_int+" pages."
