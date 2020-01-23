@@ -12,6 +12,16 @@ def get_links(url)
 end
 links = Set[]
 init_links = []
+
+puts "Testing connection..."
+begin
+  get_links("http://google.com")
+rescue
+  puts "Connection failed, check your connection and try again"
+  exit
+end
+puts "  Success!"
+
 puts "Reading config..."
 config = File.read('config.html')
 Nokogiri::HTML(config).css("a").map do |link|
@@ -23,14 +33,6 @@ end.compact
 init_links.each { |url|
     links.merge(get_links(url))
 }
-puts "Testing connection..."
-begin
-  get_links("http://google.com")
-rescue
-  puts "Connection failed, check your connection and try again"
-  exit
-end
-puts "  Success!"
 puts "Starting Threads..."
 kill=0
 for i in 1..30
