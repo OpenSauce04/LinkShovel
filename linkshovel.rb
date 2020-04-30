@@ -33,13 +33,15 @@ end.compact
 init_links.each { |url|
     links.merge(get_links(url))
 }
-puts "Starting Threads..."
 kill=0
-threadcount=1
-for i in 1..30
+threadreadycount=1
+puts "How many threads? (30 is recommended)"
+threadtotalcount=gets.to_i
+puts "Starting Threads..."
+for i in 1..threadtotalcount
 Thread.new {
-  puts "  Thread "+threadcount.to_s+" ready!"
-  threadcount+=1
+  puts "  Thread "+threadreadycount.to_s+" ready!"
+  threadreadycount+=1
   for i in 0..BigDecimal::INFINITY
     begin
       link_current=links.to_a.sample
@@ -50,21 +52,25 @@ Thread.new {
   end
 }
 end
-sleep(0.5)
 puts "Entering main loop..."
 puts "\e[H\e[2J"
 Thread.new {
 links_int=links.to_a.length.to_s
 for i in 0..BigDecimal::INFINITY
   begin
-    puts "\033[0;0H"
-    puts "LinkShovel"
-    puts "‾‾‾‾‾‾‾‾‾‾"
-    puts "Found "+links_int+" pages."
-    puts
-    puts "Press Enter to stop"
-    links_int=links.to_a.length.to_s
-    sleep 0.1
+    for i in 0..200
+      begin
+        puts "\033[0;0H"
+        puts "LinkShovel"
+        puts "‾‾‾‾‾‾‾‾‾‾"
+        puts "Found "+links_int+" pages."
+        puts
+        puts "Press Enter to stop"
+        links_int=links.to_a.length.to_s
+        sleep 0.1
+      end
+      puts "\e[H\e[2J"
+    end
   end
 end
 }
