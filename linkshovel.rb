@@ -35,19 +35,22 @@ init_links.each { |url|
 }
 puts "Starting Threads..."
 kill=0
+threadcount=1
 for i in 1..30
 Thread.new {
-for i in 0..BigDecimal::INFINITY
-  begin
-    link_current=links.to_a.sample
-    links.merge(get_links(link_current))
-  rescue
-    next
+  puts "  Thread "+threadcount.to_s+" ready!"
+  threadcount+=1
+  for i in 0..BigDecimal::INFINITY
+    begin
+      link_current=links.to_a.sample
+      links.merge(get_links(link_current))
+    rescue
+      next
+    end
   end
-end
 }
-puts "  Thread "+i.to_s+" ready!"
 end
+sleep(0.5)
 puts "Entering main loop..."
 puts "\e[H\e[2J"
 Thread.new {
