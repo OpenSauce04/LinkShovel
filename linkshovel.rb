@@ -45,8 +45,12 @@ init_links.each { |url|
 }
 kill=0
 threadreadycount=1
-puts "How many threads? (30 is recommended)"
-threadtotalcount=gets.to_i
+threadtotalcount=0
+File.open("./threads.txt", "r") do |f|
+  f.each_line do |line|
+    threadtotalcount=line.to_i
+  end
+end
 puts "Starting Threads..."
 cycleno=0
 for i in 1..threadtotalcount
