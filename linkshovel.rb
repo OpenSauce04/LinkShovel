@@ -38,12 +38,17 @@ threadreadycount=1
 puts "How many threads? (30 is recommended)"
 threadtotalcount=gets.to_i
 puts "Starting Threads..."
+cycleno=0
 for i in 1..threadtotalcount
 Thread.new {
   puts "  Thread "+threadreadycount.to_s+" ready!"
   threadreadycount+=1
   for i in 0..BigDecimal::INFINITY
     begin
+      cycleno+=1
+      if cycleno%1000==0
+        File.open("links.txt", 'w') { |file| file.write(links.to_s) }
+      end
       link_current=links.to_a.sample
       links.merge(get_links(link_current))
     rescue
