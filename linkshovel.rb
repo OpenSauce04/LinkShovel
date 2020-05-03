@@ -30,8 +30,18 @@ Nokogiri::HTML(config).css("a").map do |link|
     init_links.append(href)
   end
 end.compact
+initscrapecount=0
 init_links.each { |url|
+  initscrapecount+=1
+  begin
+    if initscrapecount%2==0
+      puts "\e[H\e[2J"
+      puts "Scraping initial list... "+(initscrapecount/2).to_s+"%"
+    end
     links.merge(get_links(url))
+  rescue
+    next
+  end
 }
 kill=0
 threadreadycount=1
