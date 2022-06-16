@@ -82,7 +82,8 @@ for i in 0..BigDecimal::INFINITY
         puts "\033[0;0H"
         puts "LinkShovel"
         puts "‾‾‾‾‾‾‾‾‾‾"
-        puts "Found "+links_int+" pages."
+        puts "Cycle no. "+cycleno.to_s
+        puts "Found "+links_int+" pages"
         puts
         puts "Press Enter to stop"
         links_int=links.to_a.length.to_s
