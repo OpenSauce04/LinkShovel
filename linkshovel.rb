@@ -53,6 +53,7 @@ File.open("./threads.txt", "r") do |f|
 end
 puts "Starting Threads..."
 cycleno=0
+lastSaveIncrement=0
 for i in 1..threadtotalcount
 Thread.new {
   puts "  Thread "+threadreadycount.to_s+" ready!"
@@ -60,7 +61,8 @@ Thread.new {
   for i in 0..BigDecimal::INFINITY
     begin
       cycleno+=1
-      if cycleno%1000==0
+      if cycleno.div(1000)>lastSaveIncrement
+        lastSaveIncrement = cycleno.div(1000)
         File.open("links.txt", 'w') { |file| file.write(links.to_s) }
       end
       link_current=links.to_a.sample
@@ -83,7 +85,10 @@ for i in 0..BigDecimal::INFINITY
         puts "LinkShovel"
         puts "‾‾‾‾‾‾‾‾‾‾"
         puts "Cycle no. "+cycleno.to_s
+        puts "Next save: Cycle "+((lastSaveIncrement+1)*1000).to_s
+
         puts "Found "+links_int+" pages"
+        
         puts
         puts "Press Enter to stop"
         links_int=links.to_a.length.to_s
