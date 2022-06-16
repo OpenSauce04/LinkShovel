@@ -1,5 +1,6 @@
 links.txt
 config.html
+threads.txt
 
 # Ruby .gitignore template from github
 *.gem
