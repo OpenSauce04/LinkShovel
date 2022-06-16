@@ -4,7 +4,7 @@ require 'open-uri'
 require 'set'
 require 'bigdecimal'
 def get_links(url)
-  Nokogiri::HTML(open(url).read).css("a").map do |link|
+  Nokogiri::HTML(URI.open(url).read).css("a").map do |link|
     if (href = link.attr("href"))
       href
     end
