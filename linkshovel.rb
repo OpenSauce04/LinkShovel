@@ -35,7 +35,7 @@ init_links.each { |url|
   initscrapecount+=1
   begin
     puts "\e[H\e[2J"
-    puts "Scraping initial list (this may take a while)... "+(initscrapecount/2).to_s+"%"
+    puts "Performing initial scrape (this may take a while)... "+(initscrapecount/2).to_s+"%"
     puts "Current: "+url
     links.merge(get_links(url))
   rescue
