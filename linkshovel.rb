@@ -56,7 +56,7 @@ cycleno=0
 lastSaveIncrement=0
 for i in 1..threadtotalcount
 Thread.new {
-  puts "  Thread "+threadreadycount.to_s+" ready!"
+  puts "  Thread "+threadreadycount.to_s+" started!"
   threadreadycount+=1
   for i in 0..BigDecimal::INFINITY
     begin
